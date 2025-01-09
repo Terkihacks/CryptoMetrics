@@ -8,6 +8,7 @@ const YAML = require('yamljs');
 const swaggerDocument = YAML.load('./swagger.yaml');
 
 const userPortfolioRoutes = require('./routes/userPortfolioRoutes')
+const priceRoutes = require('./routes/priceCryptoRoutes');
 
 //This middleware is used to parse incoming requests with URL-encoded payloads 
 app.use(express.urlencoded({ extended: true }));
@@ -16,10 +17,11 @@ app.use(express.json());
 
 //import our APIs
 app.use('/portfolio',userPortfolioRoutes)
+app.use('/live-metrics',priceRoutes)
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(process.env.PORT || 5500,() =>{
     console.log(`Server running on port ${process.env.PORT || 5500}`)
-    console.log('Swagger docs available at http://localhost:3000/api-docs');
+    console.log('Crypto Metrics API Docs available at http://localhost:3000/api-docs');
 })
