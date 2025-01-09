@@ -1,4 +1,4 @@
-const validateInputs = async(name,quantity,purchasePrice) =>{
+const validateInputs = (name,quantity,purchasePrice) =>{
     if (!name || typeof name !== 'string') {
         return 'Invalid cryptocurrency name';
     }
