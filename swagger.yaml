@@ -1,0 +1,136 @@
+openapi: 3.0.0
+info:
+  title: Cryptocurrency Portfolio API
+  description: API for managing a cryptocurrency portfolio
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /createCrypto:
+    post:
+      summary: Add a cryptocurrency to the portfolio
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Bitcoin
+                quantity:
+                  type: number
+                  example: 2
+                purchasePrice:
+                  type: number
+                  example: 45000
+      responses:
+        200:
+          description: Cryptocurrency added successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Crypto Currency has been added Successfully
+        400:
+          description: Duplicate entry
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Crypto Coin Already exists in your Wallet
+        500:
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Error adding crypto currency
+                  error:
+                    type: string
+  /getCryptos:
+    get:
+      summary: Retrieve all cryptocurrencies in the portfolio
+      responses:
+        200:
+          description: Successfully retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Cryptocurrencies retrieved successfully
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        cryptocurrency_name:
+                          type: string
+                        quantity:
+                          type: number
+                        purchase_price:
+                          type: number
+        404:
+          description: No cryptocurrencies found
+        500:
+          description: Internal server error
+  /updateCrypto/{id}:
+    put:
+      summary: Update a cryptocurrency in the portfolio
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: The ID of the cryptocurrency to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quantity:
+                  type: number
+                purchasePrice:
+                  type: number
+      responses:
+        200:
+          description: Successfully updated
+        404:
+          description: Cryptocurrency not found
+        500:
+          description: Internal server error
+  /deleteCrypto/{id}:
+    delete:
+      summary: Delete a cryptocurrency from the portfolio
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: The ID of the cryptocurrency to delete
+      responses:
+        200:
+          description: Successfully deleted
+        404:
+          description: Cryptocurrency not found
+        500:
+          description: Internal server error
