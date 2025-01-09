@@ -1,10 +1,14 @@
 //Import our database
 const db = require('../config/dbConfig');
+const validateInputs = require('../utils/validateInputs')
 
 //Add Crypto
 exports.createCrypto = async(req,res) =>{
     try{
      const{name,quantity,purchasePrice} = req.body;
+     //Validate Inputs
+     const validationErr = validateInputs;
+     if(validationErr) return res.status(400).json({message: validationErr})
      //Check if the crypto is available to avoid a double entry
      const[rows] = await db.execute('SELECT * FROM user_portfolio WHERE cryptocurrency_name = ?,'[name])
      if(rows > 0) return res.status(400).json({message:'Crypto currency already exists in your portfolio'})
