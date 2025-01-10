@@ -103,11 +103,11 @@ Use your deployed API URL (e.g., `https://api.cryptometrics.com`).
 CryptoMetrics/
 ├── src/
 │   ├── controllers/
-│   ├── /config
+│   ├── config/
 │   ├── service/
 │   ├── routes/
 │   ├── utils/
-│   └── app.js
+│   └── server.js
 ├── tests/
 │   └── portfolio.test.js
 ├── .env.example
