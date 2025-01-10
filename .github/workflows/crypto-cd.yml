@@ -1,4 +1,4 @@
-name: CI/CD NodeJS with Grunt Pipeline
+name: CI/CD NodeJS with Grunt Workflow Pipeline
 
 on:
   push:
