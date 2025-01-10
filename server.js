@@ -9,6 +9,7 @@ const swaggerDocument = YAML.load('./swagger.yaml');
 
 const userPortfolioRoutes = require('./routes/userPortfolioRoutes')
 const priceRoutes = require('./routes/priceCryptoRoutes');
+const portfolioInsights = require('./routes/portofolioInsights')
 
 //This middleware is used to parse incoming requests with URL-encoded payloads 
 app.use(express.urlencoded({ extended: true }));
@@ -18,6 +19,7 @@ app.use(express.json());
 //import our APIs
 app.use('/portfolio',userPortfolioRoutes)
 app.use('/live-metrics',priceRoutes)
+app.use('/info',portfolioInsights)
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
