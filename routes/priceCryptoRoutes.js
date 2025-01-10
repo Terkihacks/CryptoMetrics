@@ -21,7 +21,7 @@ router.post('/updatePrices', async (req, res) => {
             name: crypto.name,
             symbol: crypto.symbol,
             price: crypto.quote.USD.price,
-            market_cap_rank: crypto.cmc_rank,
+            market_cap_rank:crypto.cmc_rank
         }));
 
         await storePrices(prices, db); // Save prices to the database

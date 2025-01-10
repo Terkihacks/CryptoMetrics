@@ -1,0 +1,38 @@
+# version: "3.8"
+
+services:
+  app:
+    build: .
+    container_name: crypto-tracker-backend
+    ports:
+      - "3000:3000"  # Exposing port 3000
+    depends_on:
+      - db
+    environment:
+      - NODE_ENV=production
+      - MYSQL_HOST=db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_DATABASE=cryptometrics
+    networks:
+      - crypto_network
+
+  db:
+    image: mysql:8.0
+    container_name: crypto-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: cryptometrics
+    ports:
+      - "3306:3306"  # Exposing MySQL default port
+    networks:
+      - crypto_network
+    volumes:
+      - db-data:/var/lib/mysql
+
+networks:
+  crypto_network:
+    driver: bridge
+
+volumes:
+  db-data:
