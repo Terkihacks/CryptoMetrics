@@ -39,13 +39,13 @@ npm install
 ### **3. Set Up Environment Variables**
 Create a `.env` file in the root directory and add the following:
 ```env
-PORT=5000
+PORT=3000
 DB_HOST=localhost
 DB_PORT=3306
 DB_USER=root
 DB_PASSWORD=yourpassword
 DB_NAME=cryptometrics
-JWT_SECRET=your_jwt_secret
+
 ```
 
 ### **4. Start the Application**
@@ -56,7 +56,7 @@ npm start
 
 ### **5. Access the API**
 - Base URL: `http://localhost:5000`
-- Example endpoint: `GET /api/v1/cryptos`
+- Example endpoint: `GET /info/insights`
 
 ---
 
