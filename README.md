@@ -84,10 +84,10 @@ Use your deployed API URL (e.g., `https://api.cryptometrics.com`).
 | **Method** | **Endpoint**              | **Description**                              |
 |------------|---------------------------|----------------------------------------------|
 | `GET`      | `/live-metrics/prices`         | Fetch top 10 cryptocurrencies.              |
-| `POST`     | `portfolio/addcrypto`       | Add a cryptocurrency to your portfolio.     |
-| `GET`      | `portfolio/getcrypto`       | Retrieve portfolio details.                 |
-| `PUT`      | `portfolio/updatecrypto/:id`   | Update portfolio entry.                     |
-| `DELETE`   | `portfolio/deletecrypto/:id`   | Remove a cryptocurrency from your portfolio.|
+| `POST`     | `/portfolio/addcrypto`       | Add a cryptocurrency to your portfolio.     |
+| `GET`      | `/portfolio/getcrypto`       | Retrieve portfolio details.                 |
+| `PUT`      | `/portfolio/updatecrypto/:id`   | Update portfolio entry.                     |
+| `DELETE`   | `/portfolio/deletecrypto/:id`   | Remove a cryptocurrency from your portfolio.|
 
 ### **3. Testing Tools**
 - Use **Postman** or an equivalent API client for manual testing.
